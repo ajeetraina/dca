@@ -31,3 +31,28 @@ You can use the branch selector at the top of the file viewer to choose a differ
 - Some storage drivers require you to use a specific format for the backing filesystem. If you have external requirements to use a specific backing filesystem, this may limit your choices. See Supported backing filesystems.
 
 - After you have narrowed down which storage drivers you can choose from, your choice are determined by the characteristics of your workload and the level of stability you need. See Other considerations for help making the final decision.
+
+## 3: What are supported storage drivers per Linux distros?
+
+At a high level, the storage drivers you can use is partially determined by the Docker edition you use.
+
+In addition, Docker does not recommend any configuration that requires you to disable security features of your operating system, such as the need to disable selinux if you use the overlay or overlay2 driver on CentOS.
+
+### Docker EE and CS-Engine
+
+For Docker EE and CS-Engine, the definitive resource for which storage drivers are supported is the Product compatibility matrix. To get commercial support from Docker, you must use a supported configuration.
+
+Link: https://success.docker.com/article/compatibility-matrix
+
+### Docker CE
+
+Linux distribution	Recommended storage drivers
+Docker CE on Ubuntu	aufs, devicemapper, overlay2 (Ubuntu 14.04.4 or later, 16.04 or later), overlay, zfs, vfs
+Docker CE on Debian	aufs, devicemapper, overlay2 (Debian Stretch), overlay, vfs
+Docker CE on CentOS	devicemapper, vfs
+Docker CE on Fedora	devicemapper, overlay2 (Fedora 26 or later, experimental), overlay (experimental), vfs
+
+When possible, overlay2 is the recommended storage driver. When installing Docker for the first time, overlay2 is used by default. Previously, aufs was used by default when available, but this is no longer the case. If you want to use aufs on new installations going forward, you need to explicitly configure it, and you may need to install extra packages, such as linux-image-extra. See aufs.
+
+When in doubt, the best all-around configuration is to use a modern Linux distribution with a kernel that supports the overlay2 storage driver, and to use Docker volumes for write-heavy workloads instead of relying on writing data to the container’s writable layer.
+
