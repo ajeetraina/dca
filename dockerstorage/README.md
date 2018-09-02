@@ -24,6 +24,10 @@ Refer : https://github.com/docker/docker-ce/blob/18.03/components/engine/daemon/
 	priority = "btrfs,zfs,overlay2,aufs,overlay,devicemapper,vfs"
 ```
 
-You can use the branch selector at the top of the file viewer to choose a different branch, if you run a different version of Docker.Your choice may be limited by your Docker edition, operating system, and distribution. For instance, aufs is only supported on Ubuntu and Debian, and may require extra packages to be installed, while btrfs is only supported on SLES, which is only supported with Docker EE. See Support storage drivers per Linux distribution.
+You can use the branch selector at the top of the file viewer to choose a different branch, if you run a different version of Docker.
 
-Some storage drivers require you to use a specific format for the backing filesystem. If you have external requirements to use a specific backing filesystem, this may limit your choices. See Supported backing filesystems.After you have narrowed down which storage drivers you can choose from, your choice are determined by the characteristics of your workload and the level of stability you need. See Other considerations for help making the final decision.
+- Your choice may be limited by your Docker edition, operating system, and distribution. For instance, aufs is only supported on Ubuntu and Debian, and may require extra packages to be installed, while btrfs is only supported on SLES, which is only supported with Docker EE. See Support storage drivers per Linux distribution.
+
+- Some storage drivers require you to use a specific format for the backing filesystem. If you have external requirements to use a specific backing filesystem, this may limit your choices. See Supported backing filesystems.
+
+- After you have narrowed down which storage drivers you can choose from, your choice are determined by the characteristics of your workload and the level of stability you need. See Other considerations for help making the final decision.
