@@ -56,3 +56,23 @@ When possible, overlay2 is the recommended storage driver. When installing Docke
 
 When in doubt, the best all-around configuration is to use a modern Linux distribution with a kernel that supports the overlay2 storage driver, and to use Docker volumes for write-heavy workloads instead of relying on writing data to the container’s writable layer.
 
+## 4: Is Modifying storage driver recommended under D4W and D4M?
+
+Docker for Mac and Docker for Windows are intended for development, rather than production. Modifying the storage driver on these platforms is not possible.
+
+## 5: What are supported backing file system
+
+With regard to Docker, the backing filesystem is the filesystem where /var/lib/docker/ is located. Some storage drivers only work with specific backing filesystems.
+
+Storage driver	Supported backing filesystems
+overlay, overlay2	ext4, xfs
+aufs	ext4, xfs
+devicemapper	direct-lvm
+btrfs	btrfs
+zfs	zfs
+
+
+## 6:
+
+
+## 7:
