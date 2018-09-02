@@ -75,7 +75,20 @@ btrfs	                btrfs
 zfs	                zfs
 </pre>
 
-## 6:
+## 6: Can you brief about performance characteristics of each storage driver?
+
+
+Among other things, each storage driver has its own performance characteristics that make it more or less suitable for different workloads. Consider the following generalizations:
+
+- aufs, overlay, and overlay2 all operate at the file level rather than the block level. This uses memory more efficiently, but the container’s writable layer may grow quite large in write-heavy workloads.
+
+- Block-level storage drivers such as devicemapper, btrfs, and zfs perform better for write-heavy workloads (though not as well as Docker volumes).
+
+- For lots of small writes or containers with many layers or deep filesystems, overlay may perform better than overlay2.
+
+- btrfs and zfs require a lot of memory.
+
+- zfs is a good choice for high-density workloads such as PaaS.
 
 
 ## 7:
