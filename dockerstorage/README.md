@@ -47,10 +47,12 @@ Link: https://success.docker.com/article/compatibility-matrix
 ### Docker CE
 
 Linux distribution	Recommended storage drivers
+<pre>
 Docker CE on Ubuntu	aufs, devicemapper, overlay2 (Ubuntu 14.04.4 or later, 16.04 or later), overlay, zfs, vfs
 Docker CE on Debian	aufs, devicemapper, overlay2 (Debian Stretch), overlay, vfs
 Docker CE on CentOS	devicemapper, vfs
 Docker CE on Fedora	devicemapper, overlay2 (Fedora 26 or later, experimental), overlay (experimental), vfs
+</pre>
 
 When possible, overlay2 is the recommended storage driver. When installing Docker for the first time, overlay2 is used by default. Previously, aufs was used by default when available, but this is no longer the case. If you want to use aufs on new installations going forward, you need to explicitly configure it, and you may need to install extra packages, such as linux-image-extra. See aufs.
 
